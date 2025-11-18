@@ -4,8 +4,13 @@ def Complexity(string):
     high = False
     num = False
     special = False
-    specials = "!@#$%^&*()[]"
     for char in string:
+        isnum = False
+        ischar = False
+        if 'A'<= char <='Z' or 'a' <= char <='z':
+            ischar = True
+        if '0' <= char <= '9':
+            isnum = True
         if not high and 'A' <= char <= 'Z':
             high = True
             point += 1
@@ -18,7 +23,7 @@ def Complexity(string):
             num = True
             point += 1
             continue
-        if not special and char in specials:
+        if not special and (not isnum and not ischar):
             special = True
             point += 1
             continue
